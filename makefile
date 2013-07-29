@@ -1,6 +1,6 @@
 FILES = dateformat.min.js jsfr.js timeline.min.js \
         xnanalysis2.html friendgraph.py renren_api.py \
-        xnana.html jquery-2.0.3.min.js style.css xnana.js
+        jquery-2.0.3.min.js style.css xnana.js
 
 all:
 	lessc style.less > style.css
