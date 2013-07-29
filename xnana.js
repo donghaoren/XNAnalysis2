@@ -384,7 +384,6 @@ function show_result(dat) {
         for(var i in idx_map) {
             current_active_idx.push(i);
         }
-        draw_mask();
     };
 
     var draw_mask = function(mask_only) {
@@ -522,7 +521,7 @@ function show_result(dat) {
                     var idx = this.__index;
                     $('.person-box').removeClass('selected');
                     $('.person-box').addClass('inactive');
-                    select_person_notoggle(idx);
+                    select_person(idx);
                     $('#person-' + idx).removeClass('inactive');
                     $('#person-' + idx).addClass('selected');
                     $('#person-' + idx).addClass('dragging');
@@ -554,6 +553,7 @@ function show_result(dat) {
                 window._draggingobj._dragged = true;
                 n_data[window._draggingobj.__index][0] = x / i_scale;
                 n_data[window._draggingobj.__index][1] = y / i_scale;
+                select_person_notoggle(window._draggingobj.__index);
                 draw_mask(true);
             }
         }
@@ -602,7 +602,7 @@ function show_result(dat) {
             g.onmousedown = function() {
                 prevent_svgclick = true;
                 var idx = this._index;
-                select_person_notoggle(idx);
+                select_person(idx);
                 this._startx = parseInt(this.style.left.replace('px',''));
                 this._starty = parseInt(this.style.top.replace('px',''));
                 var e = window.event;
@@ -619,6 +619,7 @@ function show_result(dat) {
                     var dy = e.screenY - window.drag_info.mouseY;
                     n_data[window.drag_info.index][0] = (window.drag_info.x0 + dx) / i_scale;
                     n_data[window.drag_info.index][1] = (window.drag_info.y0 + dy) / i_scale;
+                    select_person_notoggle(window.drag_info.index);
                     draw_mask(true);
                     window.drag_info.dragged = true;
                     update_image_position();
