@@ -8,4 +8,6 @@ all:
 	mkdir build
 	cp $(FILES) build
 
-exe:
+exe: all
+	python setup.py py2exe
+	cp build/* dist
