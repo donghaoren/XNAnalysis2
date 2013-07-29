@@ -60,7 +60,7 @@ for user_id in id_map:
 
     people['share_ids'] = list(set(people['friend_ids']).intersection(id_map.keys()).union(set(people['share_ids'])))
     pname = people['user_name']
-    pname = unicode(pname.encode("gbk"), "gbk", errors = "ignore")
+    pname = unicode(pname.encode("gbk", errors = "ignore"), "gbk", errors = "ignore")
     try:
         print "(%d/%d) %s: %d shared. %d friends. | %d people collected." % (index, count, pname, len(people['share_ids']), len(people['friend_ids']), len(other_people))
     except:
