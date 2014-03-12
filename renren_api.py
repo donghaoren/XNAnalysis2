@@ -72,8 +72,12 @@ def api_get_ex(path, params, session = None):
         #data = grabber.urlread(url + "?" + req + "&sig=" + sig)
         data = gzip.GzipFile(fileobj=StringIO.StringIO(data)).read()
         data = unicode(data, "utf-8", errors='ignore')
-
-        result = json.loads(data)
+        try:
+            result = json.loads(data)
+        except:
+            print "==== DATA ===="
+            print data
+            print "=============="
         if 'error_code' in result:
             print "Error %s" % path, result
             return None
